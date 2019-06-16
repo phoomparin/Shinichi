@@ -14,28 +14,6 @@ export enum RuleType {
   LINK,
 }
 
-export type SocialLinks = {
-  Facebook: MatchItem
-  GitHub: MatchItem
-  LinkedIn: MatchItem
-  Medium: MatchItem
-  Bandcamp: MatchItem
-  Keybase: MatchItem
-  Twitter: MatchItem
-  YouTubeVideo: MatchItem[]
-}
-
-export type Gender = 'Male' | 'Female' | 'Non Binary' | 'Unknown'
-
-export type PersonalInfo = {
-  name: string
-  firstName: string
-  lastName: string
-  gender: Gender
-}
-
-export type PersonRecord = Partial<PersonalInfo> & Partial<SocialLinks>
-
 // export interface Matcher {
 //   name: keyof PersonRecord
 //   matchLink: Matcher

@@ -1,20 +1,15 @@
-import {searchForPages} from 'sources/google/searchForPages'
-import {search} from 'sources/google/search'
+import {SearchEngine, SearchOption} from 'types/SearchEngine'
 
-interface GoogleOption {
-  maxPage: number
-}
+import {searchForPages} from './searchForPages'
+import {GoogleResultAdapter} from './ResultAdapter'
 
-export const Google = {
-  name: 'Google',
+// TODO: Google Query Builder?
 
-  search(query: string, options?: GoogleOption) {
+export const Google: SearchEngine = {
+  async search(query: string, options?: SearchOption) {
     const {maxPage = 100} = options || {}
+    const pages = await searchForPages(query, maxPage)
 
-    return searchForPages(query, maxPage)
+    return GoogleResultAdapter(pages)
   },
-
-  searchOnce(query: string) {
-    return search(query)
-  }
 }

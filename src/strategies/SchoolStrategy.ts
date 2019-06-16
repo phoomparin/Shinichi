@@ -1,13 +1,21 @@
-export function SchoolStrategy(record: PersonRecord, state: DiscoveryState, ctx: StrategyContext) {
+import {StrategyContext, StrategyState} from 'types/Strategy'
+import {Person} from 'types/Person'
+
+export function SchoolStrategy(
+  person: Person,
+  state: StrategyState,
+  ctx: StrategyContext,
+) {
   const {Google} = ctx
 
-  const results = Google.search(`"โรงเรียน" "${record.name}`)
-  const m = matchSearchResults(results, /โรงเรียน(\w+)/, [record.name])
-  if (!m) return
+  const results = Google.search(`"โรงเรียน" "${person.fullName}"`)
+  results //?
+  // const m = matchSearchResults(results, /โรงเรียน(\w+)/, [person.fullName])
+  // if (!m) return
 
-  record.school = m[0]
+  // person.school = m[0]
 
-  const data = OBECStrategy(record, state, io)
+  // const data = OBECStrategy(person, state, ctx)
 
-  return data
+  return {person, state}
 }

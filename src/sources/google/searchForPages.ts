@@ -1,21 +1,18 @@
-import {search, SearchOption} from 'sources/google/search'
-import {customsearch_v1} from 'googleapis'
-
-export type SearchResult = customsearch_v1.Schema$Result
+import {GoogleSearchOption, GoogleSearchResult, search} from './search'
 
 export async function searchForPages(
   query: string,
   maxPage: number = 101,
-): Promise<SearchResult[]> {
+): Promise<GoogleSearchResult[]> {
   let isDone = false
-  let entries: SearchResult[] = []
+  let entries: GoogleSearchResult[] = []
   let startIndex: number | undefined
   let tries = 0
 
   // console.log('Searching...')
 
   while (!isDone && tries < 3) {
-    const options: SearchOption = {}
+    const options: GoogleSearchOption = {}
 
     if (startIndex) {
       options.start = startIndex

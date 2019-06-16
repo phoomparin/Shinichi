@@ -4,13 +4,13 @@ const {API_KEY, SEARCH_ENGINE_ID} = process.env
 
 const CustomSearch = google.customsearch('v1')
 
-export type SearchOption = customsearch_v1.Params$Resource$Cse$List
-export type SearchResult = customsearch_v1.Schema$Search
+export type GoogleSearchOption = customsearch_v1.Params$Resource$Cse$List
+export type GoogleSearchResult = customsearch_v1.Schema$Search
 
 export async function search(
   query: string,
-  options: SearchOption = {},
-): Promise<SearchResult> {
+  options: GoogleSearchOption = {},
+): Promise<GoogleSearchResult> {
   try {
     const {data} = await CustomSearch.cse.list({
       q: query,
