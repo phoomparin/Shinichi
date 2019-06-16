@@ -1,9 +1,9 @@
 import {SearchEngine, SearchResult} from '../../src/types/SearchEngine'
 
 export const GoogleMock: SearchEngine = {
-  async search() {
+  async search(): Promise<SearchResult[]> {
     return [
-      {link: '', title: '', a: 1}
+      {link: '', title: ''}
     ]
   },
 }

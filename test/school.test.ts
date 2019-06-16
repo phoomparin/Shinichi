@@ -20,7 +20,8 @@ describe('Shinichi', () => {
     shin.know('gender', 'Male')
     shin.target(person)
 
-    const result = await shin.search() //?
-    expect(result).toBe(true)
+    const result = await shin.search()
+    expect(result.person.fullName).toBe('Phoomparin Mano')
+    expect(result.person.gender).toBe('Male')
   })
 })

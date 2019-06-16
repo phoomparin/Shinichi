@@ -30,7 +30,7 @@ export class Shinichi {
   }
 
   target(person: Person) {
-    this.person = person
+    this.person = {...this.person, ...person}
   }
 
   async search(): Promise<StrategyResult> {
@@ -39,8 +39,8 @@ export class Shinichi {
     for (let strategy of this.strategies) {
       const data = await strategy(person, state, this.context)
 
-      person = data.person
-      state = data.state
+      person = {...person, ...data.person}
+      state = {...state, ...data.state}
     }
 
     return {person, state}
@@ -51,8 +51,9 @@ export class Shinichi {
    *
    * @see {search}
    */
-  searchFor(person: Person): StrategyResult {
+  searchFor(person: Person): Promise<StrategyResult> {
     this.target(person)
+
     return this.search()
   }
 }
