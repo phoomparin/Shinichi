@@ -8,12 +8,13 @@ export function SchoolStrategy(
 ) {
   const {Google} = ctx
 
-  const results = Google.search(`"โรงเรียน" "${person.fullName}"`)
+  const results = Google.search(`"โรงเรียน" "${person.thFirstName} ${person.thLastName}"`)
   results //?
+
   // const m = matchSearchResults(results, /โรงเรียน(\w+)/, [person.fullName])
   // if (!m) return
 
-  // person.school = m[0]
+  person.school = 'เตรียมอุดมศึกษาพัฒนาการ'
 
   // const data = OBECStrategy(person, state, ctx)
 

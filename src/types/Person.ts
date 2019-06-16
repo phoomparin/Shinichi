@@ -1,15 +1,23 @@
-export type Person = Partial<PersonalInfo> & Partial<SocialLinks>
+export type Person = Partial<PersonalInfo> & Partial<ThaiName> & Partial<SocialLinks> & Partial<SchoolInfo>
 
 export type Gender = 'Male' | 'Female' | 'Non Binary' | 'Unknown'
 
-export type PersonalInfo = {
-  fullName: string
+export interface ThaiName {
+  thFirstName: string
+  thLastName: string
+}
+
+export interface PersonalInfo {
   firstName: string
   lastName: string
   gender: Gender
 }
 
-export type SocialLinks = {
+export interface SchoolInfo {
+  school: string
+}
+
+export interface SocialLinks {
   Facebook: string
   GitHub: string
   LinkedIn: string

@@ -3,6 +3,7 @@ import {GoogleMock} from './mocks/GoogleMock'
 import {Shinichi} from '../src/shinichi'
 import {Person} from '../src/types/Person'
 import {StrategyContext} from '../src/types/Strategy'
+import {StrategyMapping} from '../src/shinichi/StrategyMapping'
 import {SchoolStrategy} from '../src/strategies/SchoolStrategy'
 
 const MockContext: StrategyContext = {
@@ -11,16 +12,23 @@ const MockContext: StrategyContext = {
 
 describe('Shinichi', () => {
   it('should find the school name of Phoomparin', async () => {
-    const person: Person = {fullName: 'Phoomparin Mano'}
+    const person: Person = {
+      thFirstName: 'ภูมิปรินทร์',
+      thLastName: 'มะโน'
+    }
 
     const shin = new Shinichi()
     shin.context = MockContext
-    shin.use(SchoolStrategy)
+
+    shin.want('school')
     shin.know('gender', 'Male')
     shin.target(person)
 
-    const result = await shin.search()
-    expect(result.person.fullName).toBe('Phoomparin Mano')
-    expect(result.person.gender).toBe('Male')
+    const {person: p} = await shin.search()
+
+    expect(p.thFirstName).toBe('ภูมิปรินทร์')
+    expect(p.thLastName).toBe('มะโน')
+    expect(p.gender).toBe('Male')
+    expect(p.school).toBe('เตรียมอุดมศึกษาพัฒนาการ')
   })
 })
