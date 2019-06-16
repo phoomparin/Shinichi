@@ -10,7 +10,6 @@ export class Shinichi {
   person: Person = {}
   state: StrategyState = {}
   strategies: Strategy[] = []
-  fields: string[] = []
   context: StrategyContext = DefaultContext
 
   use(strategy: Strategy) {
@@ -19,10 +18,6 @@ export class Shinichi {
 
   setup(handle: (self: Shinichi) => any) {
     return handle(this)
-  }
-
-  wants(...fields: string[]) {
-    this.fields = [...this.fields, ...fields]
   }
 
   know(field: keyof Person, value: any) {

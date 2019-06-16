@@ -16,7 +16,6 @@ describe('Shinichi', () => {
     const shin = new Shinichi()
     shin.context = MockContext
     shin.use(SchoolStrategy)
-    shin.wants('fullName', 'firstName')
     shin.know('gender', 'Male')
     shin.target(person)
 
