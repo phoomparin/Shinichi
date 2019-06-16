@@ -1,11 +1,7 @@
-import {Strategy} from 'types/Strategy'
+import {Strategy, StrategyMapping} from 'types/Strategy'
 import {Person} from 'types/Person'
 
 import {SchoolStrategy} from '../strategies/SchoolStrategy'
-
-export type StrategyMapping = {
-  [index: string]: Strategy
-}
 
 export const DefaultStrategyMap: StrategyMapping = {
   school: SchoolStrategy,
