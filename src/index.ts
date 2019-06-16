@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import {PersonRecord} from 'types'
+import {PersonRecord} from 'v1/types'
 import {DiscoveryEngine} from 'v1/engines/DiscoveryEngine'
 import {SocialRule} from 'v1/rules/SocialRule'
 

@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["src", "types", "v1/Discovery.ts", "v1/types"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",

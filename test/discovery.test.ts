@@ -10,12 +10,16 @@ const MockGoogle: SearchEngine = {
   },
 }
 
-describe('The discovery engine', () => {
-  it('should execute School Strategy correctly', () => {
+describe('Shinichi', () => {
+  it('should find the school name of Phoomparin', () => {
     const person = {fullName: 'Phoomparin Mano'}
 
-    const I = new Detective()
-    I.determine('fullName')
-    I.searchFor(person)
+    const shin = new Shinichi()
+    shin.use(SchoolStrategy)
+    shin.want('fullName', 'firstName')
+    shin.know('isThaiStudent', true)
+    shin.target(person)
+    shin.search()
+    // shin.searchFor(person)
   })
 })
