@@ -3,8 +3,6 @@ import {GoogleMock} from './mocks/GoogleMock'
 import {Shinichi} from '../src/shinichi'
 import {Person} from '../src/types/Person'
 import {StrategyContext} from '../src/types/Strategy'
-import {StrategyMapping} from '../src/shinichi/StrategyMapping'
-import {SchoolStrategy} from '../src/strategies/SchoolStrategy'
 
 const MockContext: StrategyContext = {
   Google: GoogleMock,
