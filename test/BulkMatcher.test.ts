@@ -1,6 +1,7 @@
 import {SocialMatcher} from '../src/matchers/SocialMediaMatcher'
+import {MatchItem} from '../src/types/Matcher'
 
-const expectLink = (field?: string) => expect(field && field.link)
+const expectLink = (field?: MatchItem) => expect(field && field.link)
 
 describe('Bulk Matcher', () => {
   it('Match items using the social media matcher', () => {
