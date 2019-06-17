@@ -16,7 +16,10 @@ export async function SchoolStrategy(
 
   const title = results[0].title
 
-  const [school] = match(title, /โรงเรียน(.*)/, [person.thFirstName])
+  const m = match(title, /โรงเรียน([ก-๙]+)/, [person.thFirstName])
+
+  const [school] = m
+
   if (!school) return
 
   person.school = school

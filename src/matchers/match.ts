@@ -4,10 +4,9 @@ export function NotMatching(text: string, required: Nullable<string>[]) {
   const list: string[] = required.map(x => x || '')
 
   for (let match of list) {
-    match
-    text
+    const isMatch = text.includes(match)
 
-    if (!match.includes(text)) return true
+    if (!isMatch) return true
   }
 
   return false

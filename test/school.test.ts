@@ -1,16 +1,8 @@
-import {makeSingleGoogleMock} from './mocks/GoogleMock'
-
 import {Shinichi} from '../src/shinichi'
 import {Person} from '../src/types/Person'
-import {StrategyContext} from '../src/types/Strategy'
 import {SchoolStrategy} from '../src/strategies/SchoolStrategy'
 
-const MockContext: StrategyContext = {
-  Google: makeSingleGoogleMock(
-    'โรงเรียนเตรียมอุดมศึกษาพัฒนาการ - นายภูมิปรินทร์ มะโน',
-    'http://tup.ac.th'
-  )
-}
+import {SchoolMockContext} from './mocks/SchoolMock'
 
 describe('Shinichi', () => {
   it('should find the school name of Phoomparin', async () => {
@@ -20,7 +12,7 @@ describe('Shinichi', () => {
     }
 
     const shin = new Shinichi()
-    shin.context = MockContext
+    shin.context = SchoolMockContext
     shin.strategyMap = {school: SchoolStrategy}
 
     shin.want('school')

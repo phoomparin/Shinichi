@@ -7,6 +7,8 @@ export interface SearchResult {
   link: string
 }
 
+export type SearchFunction = (query: string, options?: SearchOption) => Promise<SearchResult[]>
+
 export interface SearchEngine {
-  search: (query: string, options?: SearchOption) => Promise<SearchResult[]>
+  search: SearchFunction
 }
