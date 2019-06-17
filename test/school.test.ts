@@ -6,7 +6,7 @@ import {SchoolMockContext} from './mocks/SchoolMock'
 
 describe('Shinichi', () => {
   it('should find the school name of Phoomparin', async () => {
-    const person: Person = {
+    const target: Person = {
       thFirstName: 'ภูมิปรินทร์',
       thLastName: 'มะโน',
       gender: 'Male'
@@ -17,7 +17,7 @@ describe('Shinichi', () => {
     shin.strategyMap = {school: SchoolStrategy}
     shin.want('school')
 
-    const {person: p} = await shin.searchFor(person)
+    const {person: p} = await shin.searchFor(target)
 
     expect(p.thFirstName).toBe('ภูมิปรินทร์')
     expect(p.thLastName).toBe('มะโน')
