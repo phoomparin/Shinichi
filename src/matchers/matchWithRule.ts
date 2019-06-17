@@ -5,11 +5,15 @@ import {Nullable} from 'types'
 export function matchWithRule(rule: MatchRule, text: string): Nullable<MatchItem> {
   const {matcher} = rule
 
+  if (typeof matcher === 'function') {
+    return matcher(text, rule)
+  }
+
   if (typeof matcher === 'string') {
     if (text.includes(matcher)) {
       const path = extractPathFromURL(text)
 
-      return {link: path, id: text}
+      return {link: text, id: path}
     }
   }
 

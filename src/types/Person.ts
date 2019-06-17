@@ -1,3 +1,5 @@
+import {MatchItem} from 'types/Matcher'
+
 export type Person = Partial<PersonalInfo> & Partial<ThaiName> & Partial<SocialLinks> & Partial<SchoolInfo>
 
 export type Gender = 'Male' | 'Female' | 'Non Binary' | 'Unknown'
@@ -20,14 +22,14 @@ export interface SchoolInfo {
 }
 
 export interface SocialLinks {
-  Facebook: string
-  GitHub: string
-  LinkedIn: string
-  Medium: string
-  Bandcamp: string
-  Keybase: string
-  Twitter: string
-  YouTubeVideo: string[]
+  Facebook: MatchItem
+  GitHub: MatchItem
+  LinkedIn: MatchItem
+  Medium: MatchItem
+  Bandcamp: MatchItem
+  Keybase: MatchItem
+  Twitter: MatchItem
+  YouTubeVideo: MatchItem[]
 }
 
 export type Field = keyof Person

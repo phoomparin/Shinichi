@@ -3,10 +3,12 @@ import {Person} from 'types/Person'
 
 import {SchoolStrategy} from '../strategies/SchoolStrategy'
 import {GenderStrategy} from '../strategies/GenderStrategy'
+import {SocialMediaStrategy} from '../strategies/SocialMediaStrategy'
 
 export const DefaultStrategyMap: StrategyMapping = {
   school: SchoolStrategy,
-  gender: GenderStrategy
+  gender: GenderStrategy,
+  Facebook: SocialMediaStrategy,
 }
 
 type Field = keyof Person

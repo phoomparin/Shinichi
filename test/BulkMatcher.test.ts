@@ -1,21 +1,14 @@
-import {SocialMatcher} from '../src/matchers/SocialMediaMatcher'
-import {MatchItem} from '../src/types/Matcher'
-
-const expectLink = (field?: MatchItem) => expect(field && field.link)
+import {BulkMatcher} from '../src/matchers/BulkMatcher'
+import {expectMatch} from './utils/Expect'
 
 describe('Bulk Matcher', () => {
-  it('Match items using the social media matcher', () => {
-    const results = [{
-      title: 'GitHub - The Place where I fork',
-      link: 'https://github.com/phoomparin'
-    }, {
-      title: 'Facebook - Phoomparin Mano',
-      link: 'https://facebook.com/phoomparin.mano'
-    }]
+  it('Match items using the bulk matcher', () => {
+    const bm = new BulkMatcher()
+    bm.add('Facebook', 'facebook.com')
+    bm.add('school', /โรงเรียน([ก-๙]+)/)
 
-    const sm = SocialMatcher(results)
-
-    expectLink(sm.GitHub).toBe('phoomparin')
-    expectLink(sm.Facebook).toBe('phoomparin.mano')
+    const p = bm.match(['โรงเรียนเตรียมอุดมศึกษาพัฒนาการ', 'https://facebook.com/phoomparin.mano'])
+    expectMatch(p.Facebook).toBe('phoomparin.mano')
+    expectMatch(p.school).toBe('เตรียมอุดมศึกษาพัฒนาการ')
   })
 })
