@@ -3,11 +3,13 @@ export type Person = Partial<PersonalInfo> & Partial<ThaiName> & Partial<SocialL
 export type Gender = 'Male' | 'Female' | 'Non Binary' | 'Unknown'
 
 export interface ThaiName {
+  thTitle: string
   thFirstName: string
   thLastName: string
 }
 
 export interface PersonalInfo {
+  title: string
   firstName: string
   lastName: string
   gender: Gender

@@ -1,4 +1,4 @@
-import {StrategyContext, StrategyResult, StrategyState} from 'types/Strategy'
+import {StrategyResult, StrategyState} from 'types/Strategy'
 import {Person} from 'types/Person'
 
 /**
@@ -8,22 +8,22 @@ export async function GenderStrategy(
   person: Person,
   state: StrategyState,
 ): Promise<StrategyResult> {
-  const {firstName, thFirstName} = person
+  const {title, thTitle} = person
   if (person.gender) return {person, state}
 
-  if (firstName && firstName.includes('Mr.')) {
+  if (title && title.includes('Mr.')) {
     person.gender = 'Male'
   }
 
-  if (firstName && /(Mrs|Ms)\./.test(firstName)) {
+  if (title && /(Mrs|Ms)/.test(title)) {
     person.gender = 'Female'
   }
 
-  if (thFirstName && /(นาย|ดช\.)/.test(thFirstName)) {
+  if (thTitle && /(นาย|ดช)/.test(thTitle)) {
     person.gender = 'Male'
   }
 
-  if (thFirstName && /(นาง|นางสาว|ดญ\.)/.test(thFirstName)) {
+  if (thTitle && /(นาง|นางสาว|ดญ)/.test(thTitle)) {
     person.gender = 'Female'
   }
 

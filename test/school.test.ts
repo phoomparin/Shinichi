@@ -27,7 +27,8 @@ describe('Shinichi', () => {
 
   it('should derive my gender from my Thai title', async () => {
     const target: Person = {
-      thFirstName: 'นายภูมิปรินทร์',
+      thTitle: 'นาย',
+      thFirstName: 'ภูมิปรินทร์',
       thLastName: 'มะโน'
     }
 
@@ -41,7 +42,8 @@ describe('Shinichi', () => {
 
   it('should derive my gender from my English title', async () => {
     const target: Person = {
-      firstName: 'Mrs. Suthida',
+      title: 'Mrs.',
+      firstName: 'Suthida',
       lastName: 'Vajiralongkorn'
     }
 
