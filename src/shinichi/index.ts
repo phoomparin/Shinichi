@@ -13,8 +13,8 @@ export class Shinichi {
   person: Person = {}
   state: StrategyState = {}
   strategies: Strategy[] = []
-  context: StrategyContext = DefaultContext
-  strategyMap: StrategyMapping = DefaultStrategyMap
+  context: StrategyContext = {...DefaultContext}
+  strategyMap: StrategyMapping = {...DefaultStrategyMap}
 
   use(strategy: Strategy) {
     // Prevent duplicate entries from being added
