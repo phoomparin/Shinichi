@@ -18,3 +18,5 @@ export interface MatcherOptions {
 }
 
 export type MatchResult = Partial<Record<keyof Person, MatchItem>>
+
+export type MatcherMapping = Partial<Record<keyof Person, Matcher>>

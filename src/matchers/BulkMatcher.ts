@@ -1,5 +1,5 @@
-import {Matcher, MatcherOptions, MatchItem, MatchResult, MatchRule} from 'types/Matcher'
-import {Person} from 'types/Person'
+import {Matcher, MatcherMapping, MatcherOptions, MatchItem, MatchResult, MatchRule} from 'types/Matcher'
+import {Field, Person} from 'types/Person'
 import {matchWithRule} from './matchWithRule'
 
 export class BulkMatcher {
@@ -13,6 +13,14 @@ export class BulkMatcher {
     }
 
     return this.rules.push(matchRule)
+  }
+
+  addMatchers(mapping: MatcherMapping) {
+    for (let key in mapping) {
+      const f = key as Field
+
+      this.add(f, mapping[f] as Matcher)
+    }
   }
 
   match(list: string[]): MatchResult {
