@@ -1,6 +1,6 @@
 import {DiscoveryEngine} from '../src/v1/engines/DiscoveryEngine'
 import {GenderRule} from '../src/v1/rules/GenderRule'
-import {PersonRecord} from './types'
+import {PersonRecord} from '../src/types/Matcher'
 
 describe('Discovery Engine', () => {
   it('should apply the gender rule', async function() {

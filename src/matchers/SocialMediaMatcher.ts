@@ -15,3 +15,4 @@ export function MatchSocial(engine: MatchEngine) {
   engine.addLinkRule('Medium', 'medium.com')
   engine.addLinkRule('Twitter', 'twitter.com')
 }
+
