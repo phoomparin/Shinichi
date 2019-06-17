@@ -9,7 +9,9 @@ describe('Shinichi Core', () => {
         firstName: 'Somsak',
         lastName: 'Jeamteerasakul'
       },
-      state: {}
+      state: {
+        _mockStrategy: true
+      }
     })
 
     const shin = new Shinichi()
@@ -17,9 +19,10 @@ describe('Shinichi Core', () => {
 
     shin.want('firstName')
 
-    const {person} = await shin.search()
+    const {person, state} = await shin.search()
     expect(person.firstName).toBe('Somsak')
     expect(person.lastName).toBe('Jeamteerasakul')
+    expect(state._mockStrategy).toBe(true)
   })
 
   it('should not re-run the strategies that has already been specified', async () => {

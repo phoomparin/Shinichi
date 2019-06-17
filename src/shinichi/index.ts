@@ -47,6 +47,8 @@ export class Shinichi {
     let {person, state} = this
 
     for (let strategy of this.strategies) {
+      console.log('Running strategy:', strategy.name)
+
       const data = await strategy(person, state, this.context)
       if (!data) continue
 

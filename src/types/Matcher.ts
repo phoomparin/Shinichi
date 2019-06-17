@@ -9,10 +9,12 @@ export interface MatchItem {
 
 export interface MatchRule {
   name: keyof Person
-  matchLink: Matcher
+  matcher: Matcher
   multiple?: boolean
 }
 
-export type Matches = {
-  [rule: string]: MatchItem | MatchItem[]
+export interface MatcherOptions {
+  multiple?: boolean
 }
+
+export type MatchResult = Partial<Record<keyof Person, MatchItem>>

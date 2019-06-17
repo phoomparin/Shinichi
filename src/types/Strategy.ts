@@ -21,4 +21,4 @@ export type Strategy = StrategyFunction
 
 export type StrategyState = {[key: string]: any}
 
-export type StrategyMapping = Record<keyof Person, Strategy>
+export type StrategyMapping = Partial<Record<keyof Person, Strategy>>
