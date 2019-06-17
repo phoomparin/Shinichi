@@ -10,6 +10,9 @@ export async function SchoolStrategy(
 ) {
   const {Google} = ctx
 
+  // If the school is already declared, avoid re-running this.
+  if (person.school) return
+
   const results = await Google.search(`"โรงเรียน" "${person.thFirstName} ${person.thLastName}"`)
 
   if (!results || !results[0]) return
