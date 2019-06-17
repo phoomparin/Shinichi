@@ -8,18 +8,16 @@ describe('Shinichi', () => {
   it('should find the school name of Phoomparin', async () => {
     const person: Person = {
       thFirstName: 'ภูมิปรินทร์',
-      thLastName: 'มะโน'
+      thLastName: 'มะโน',
+      gender: 'Male'
     }
 
     const shin = new Shinichi()
     shin.context = SchoolMockContext
     shin.strategyMap = {school: SchoolStrategy}
-
     shin.want('school')
-    shin.know('gender', 'Male')
-    shin.target(person)
 
-    const {person: p} = await shin.search()
+    const {person: p} = await shin.searchFor(person)
 
     expect(p.thFirstName).toBe('ภูมิปรินทร์')
     expect(p.thLastName).toBe('มะโน')
