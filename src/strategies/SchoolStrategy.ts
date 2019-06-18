@@ -23,7 +23,7 @@ export const SchoolStrategy: Strategy = async (person, state, ctx) => {
     const [school] = match(description, /โรงเรียน([ก-๙]+)/, [person.thFirstName])
     if (!school) return
 
-    console.log('School =', school)
+    // console.debug('School =', school)
 
     if (matchCount[school]) {
       matchCount[school] += 1
