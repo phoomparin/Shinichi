@@ -17,7 +17,6 @@ export async function searchForPages(
     }
 
     const {items, queries} = await search(query, options)
-    console.log('Items =', items.length)
 
     if (!items) {
       tries++
@@ -26,8 +25,6 @@ export async function searchForPages(
     }
 
     entries = [...entries, ...items]
-
-    // console.log('Queries =', queries)
 
     if (!queries) {
       tries++
