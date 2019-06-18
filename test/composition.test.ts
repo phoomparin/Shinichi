@@ -6,7 +6,7 @@ import {depends} from '../src/shinichi/compose'
 import {Person} from '../src/types/Person'
 import {Shinichi} from '../src/shinichi'
 import {SchoolMockContext} from './mocks/SchoolMock'
-import {expectMatch} from './utils/Expect'
+import {expectUsername} from './utils/Expect'
 
 const CombinedStrategy: Strategy = async (person, state, ctx): Promise<StrategyResult | undefined> => {
   await depends([SchoolStrategy, GenderStrategy], person, state, ctx)
@@ -15,8 +15,8 @@ const CombinedStrategy: Strategy = async (person, state, ctx): Promise<StrategyR
   if (!person.gender || !person.school) return
 
   person.Facebook = {
-    match: 'phoomparin.mano',
-    text: 'https://facebook.com/phoomparin.mano'
+    username: 'phoomparin.mano',
+    link: 'https://facebook.com/phoomparin.mano'
   }
 
   return {person, state}
@@ -37,6 +37,6 @@ describe('Strategy Composition', () => {
     shin.want('Facebook')
 
     const {person} = await shin.searchFor(target)
-    expectMatch(person.Facebook).toBe('phoomparin.mano')
+    expectUsername(person.Facebook).toBe('phoomparin.mano')
   })
 })

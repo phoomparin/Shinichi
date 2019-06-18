@@ -1,5 +1,3 @@
-import {MatchItem} from 'types/Matcher'
-
 export type Person = Partial<PersonalInfo> & Partial<ThaiName> & Partial<SocialLinks> & Partial<SchoolInfo>
 
 export type Gender = 'Male' | 'Female' | 'Non Binary' | 'Unknown'

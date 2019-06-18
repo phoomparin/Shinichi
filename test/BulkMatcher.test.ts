@@ -1,4 +1,4 @@
-import {expectMatch} from './utils/Expect'
+import {expectUsername} from './utils/Expect'
 
 import {BulkMatcher} from '../src/matchers/BulkMatcher'
 
@@ -9,7 +9,7 @@ describe('Bulk Matcher', () => {
     bm.add('school', /โรงเรียน([ก-๙]+)/)
 
     const p = bm.match(['โรงเรียนเตรียมอุดมศึกษาพัฒนาการ', 'https://facebook.com/phoomparin.mano'])
-    expectMatch(p.Facebook).toBe('phoomparin.mano')
-    expectMatch(p.school).toBe('เตรียมอุดมศึกษาพัฒนาการ')
+    expectUsername(p.Facebook).toBe('phoomparin.mano')
+    expectUsername(p.school).toBe('เตรียมอุดมศึกษาพัฒนาการ')
   })
 })
