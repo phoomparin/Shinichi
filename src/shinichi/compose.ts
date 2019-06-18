@@ -1,7 +1,7 @@
 import {Strategy, StrategyContext, StrategyResult, StrategyState} from 'types/Strategy'
 import {Person} from 'types/Person'
 
-const depends = (...strategies: Strategy[]): Strategy => async (person, state, ctx): Promise<StrategyResult> => {
+const combineStrategy = (...strategies: Strategy[]): Strategy => async (person, state, ctx): Promise<StrategyResult> => {
   for (let strategy of strategies) {
     const result = await strategy(person, state, ctx)
     if (!result) continue
@@ -13,8 +13,8 @@ const depends = (...strategies: Strategy[]): Strategy => async (person, state, c
   return {person, state}
 }
 
-export async function extend(strategies: Strategy[], person: Person, state: StrategyState, ctx: StrategyContext) {
-  const RootStrategy = depends(...strategies)
+export async function depends(strategies: Strategy[], person: Person, state: StrategyState, ctx: StrategyContext) {
+  const RootStrategy = combineStrategy(...strategies)
   const result = await RootStrategy(person, state, ctx)
 
   if (result) {
