@@ -1,6 +1,5 @@
 import {Person} from './Person'
 import {SearchEngine} from './SearchEngine'
-import {Nullable} from 'types/index'
 
 export type StrategyContext = {
   Google: SearchEngine
@@ -10,9 +9,9 @@ export type StrategyFunction = (
   person: Person,
   state: StrategyState,
   context: StrategyContext,
-) => Promise<Nullable<StrategyResult>>
+) => Promise<StrategyResult | undefined>
 
-export interface StrategyResult {
+export type StrategyResult = {
   person: Person
   state: StrategyState
 }

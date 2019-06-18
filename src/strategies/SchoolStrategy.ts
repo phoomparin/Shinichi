@@ -1,13 +1,8 @@
-import {StrategyContext, StrategyState} from 'types/Strategy'
-import {Person} from 'types/Person'
+import {Strategy} from 'types/Strategy'
 
 import {match} from '../matchers/match'
 
-export async function SchoolStrategy(
-  person: Person,
-  state: StrategyState,
-  ctx: StrategyContext,
-) {
+export const SchoolStrategy: Strategy = async (person, state, ctx) => {
   const {Google} = ctx
 
   // If the school is already declared, avoid re-running this.

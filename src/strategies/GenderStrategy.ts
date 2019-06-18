@@ -1,6 +1,4 @@
-import {StrategyResult, StrategyState} from 'types/Strategy'
-import {Person} from 'types/Person'
-import {Nullable} from 'types'
+import {Strategy, StrategyResult} from 'types/Strategy'
 
 const test = (regex: RegExp, text?: string) =>
   text && regex.test(text)
@@ -8,10 +6,7 @@ const test = (regex: RegExp, text?: string) =>
 /**
  * Derive the gender from the person's title.
  */
-export async function GenderStrategy(
-  person: Person,
-  state: StrategyState,
-): Promise<Nullable<StrategyResult>> {
+export const GenderStrategy: Strategy = async (person, state): Promise<StrategyResult> => {
   const {title, thTitle} = person
 
   // If the gender is already declared, avoid re-running this.

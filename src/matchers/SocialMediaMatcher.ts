@@ -1,6 +1,7 @@
 import {BulkMatcher} from '../matchers/BulkMatcher'
 import {SearchResult} from 'types/SearchEngine'
 import {MatcherMapping, MatchResult} from 'types/Matcher'
+import {Person} from 'types/Person'
 
 const socialSites: MatcherMapping = {
   Facebook: 'facebook.com',

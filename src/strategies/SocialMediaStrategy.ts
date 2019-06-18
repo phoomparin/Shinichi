@@ -1,14 +1,14 @@
-import {Person} from 'types/Person'
-import {StrategyContext, StrategyResult, StrategyState} from 'types/Strategy'
+import {Strategy, StrategyResult} from 'types/Strategy'
 
 import {SocialMatcher} from '../matchers/SocialMediaMatcher'
+import {Person} from 'types/Person'
 
-export async function SocialMediaStrategy(person: Person, state: StrategyState, ctx: StrategyContext): Promise<StrategyResult> {
+export const SocialMediaStrategy: Strategy = async (target, state, ctx): Promise<StrategyResult> => {
   const {Google} = ctx
 
-  const results = await Google.search(`"${person.firstName} ${person.lastName}"`)
+  const results = await Google.search(`"${target.firstName} ${target.lastName}"`)
 
-  const p = SocialMatcher(results)
+  const person = SocialMatcher(results) as Person
 
-  return {person: p, state}
+  return {person, state}
 }
