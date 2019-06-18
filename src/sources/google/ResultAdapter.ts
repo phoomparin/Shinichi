@@ -11,6 +11,8 @@ export const GoogleResultAdapter = (
       return resultPage.items.map(result => ({
         title: result.title || '',
         link: result.link || '',
+        displayLink: result.displayLink || '',
+        description: result.snippet || ''
       }))
     })
-    .reduce((x, y) => [...x, ...y])
+    .reduce((x, y) => [...x, ...y], [])

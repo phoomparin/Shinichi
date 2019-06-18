@@ -9,18 +9,26 @@ export async function searchForPages(
   let startIndex: number | undefined
   let tries = 0
 
-  // console.log('Searching...')
-
   while (!isDone && tries < 3) {
     const options: GoogleSearchOption = {}
 
     if (startIndex) {
       options.start = startIndex
-
-      // console.log('Searching Next Page:', startIndex)
     }
 
     const {items, queries} = await search(query, options)
+    console.log('Items =', items)
+
+    if (!items) {
+      tries++
+
+      continue
+    }
+
+    entries = [...entries, ...items]
+
+    console.log('Queries =', queries)
+
     if (!queries) {
       tries++
 
@@ -42,14 +50,6 @@ export async function searchForPages(
     }
 
     // console.log(queries)
-
-    if (!items) {
-      tries++
-
-      continue
-    }
-
-    entries = [...entries, ...items]
 
     if (!startIndex) {
       isDone = true

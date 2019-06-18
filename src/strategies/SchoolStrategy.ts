@@ -9,6 +9,7 @@ export const SchoolStrategy: Strategy = async (person, state, ctx) => {
   if (person.school) return
 
   const results = await Google.search(`"โรงเรียน" "${person.thFirstName} ${person.thLastName}"`)
+  console.log(results)
 
   if (!results || !results[0]) return
 

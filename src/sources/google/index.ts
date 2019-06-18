@@ -7,8 +7,12 @@ import {GoogleResultAdapter} from './ResultAdapter'
 
 export const Google: SearchEngine = {
   async search(query: string, options?: SearchOption) {
-    const {maxPage = 100} = options || {}
+    console.log('Searching Google for:', query)
+
+    const {maxPage = 101} = options || {}
     const pages = await searchForPages(query, maxPage)
+
+    console.log(`Found ${pages.length} results.`)
 
     return GoogleResultAdapter(pages)
   },
