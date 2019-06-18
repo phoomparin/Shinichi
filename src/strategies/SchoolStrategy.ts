@@ -9,19 +9,19 @@ export const SchoolStrategy: Strategy = async (person, state, ctx) => {
   if (person.school) return
 
   const results = await Google.search(`"โรงเรียน" "${person.thFirstName} ${person.thLastName}"`)
-  console.log(results)
+  if (!results) return
 
-  if (!results || !results[0]) return
+  results.forEach(result => {
+    const {description} = result
+    if (!description) return
 
-  const title = results[0].title
+    const [school] = match(description, /โรงเรียน([ก-๙]+)/, [person.thFirstName])
+    if (!school) return
 
-  const m = match(title, /โรงเรียน([ก-๙]+)/, [person.thFirstName])
+    console.log('School =', school)
 
-  const [school] = m
-
-  if (!school) return
-
-  person.school = school
+    person.school = school
+  })
 
   return {person, state}
 }
