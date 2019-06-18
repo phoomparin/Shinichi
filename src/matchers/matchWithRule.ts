@@ -11,19 +11,19 @@ export function matchWithRule(rule: MatchRule, text: string): Nullable<MatchItem
 
   if (typeof matcher === 'string') {
     if (text.includes(matcher)) {
-      const path = extractPathFromURL(text)
+      const match = extractPathFromURL(text)
 
-      return {link: text, id: path}
+      return {text, match}
     }
   }
 
   if (matcher instanceof RegExp) {
-    const match = matcher.exec(text)
+    const m = matcher.exec(text)
 
-    if (match) {
-      const [link, id] = match
+    if (m) {
+      const [text, match] = m
 
-      return {link, id}
+      return {text, match}
     }
   }
 

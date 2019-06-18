@@ -1,5 +1,6 @@
-import {BulkMatcher} from '../src/matchers/BulkMatcher'
 import {expectMatch} from './utils/Expect'
+
+import {BulkMatcher} from '../src/matchers/BulkMatcher'
 
 describe('Bulk Matcher', () => {
   it('Match items using the bulk matcher', () => {

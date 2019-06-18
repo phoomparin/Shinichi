@@ -1,5 +1,5 @@
 import {MatchItem} from '../../src/types/Matcher'
 
-export const expectMatch = (field?: MatchItem) => expect(field && field.id)
+export const expectMatch = (field?: MatchItem) => expect(field && field.match)
 
-export const expectLink = (field?: MatchItem) => expect(field && field.link)
+export const expectText = (field?: MatchItem) => expect(field && field.text)

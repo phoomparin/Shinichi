@@ -3,8 +3,8 @@ import {Person} from 'types/Person'
 export type Matcher = RegExp | Function | string
 
 export interface MatchItem {
-  link?: string
-  id?: string
+  text?: string
+  match?: string
 }
 
 export interface MatchRule {

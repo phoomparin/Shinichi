@@ -1,17 +1,18 @@
 import {Person} from '../src/types/Person'
 import {Shinichi} from '../src/shinichi'
-import {Strategy} from '../src/types/Strategy'
+import {StrategyResult} from '../src/types/Strategy'
 
 describe('Shinichi Core', () => {
   it('should be able to define custom strategies', async () => {
-    const MockStrategy: Strategy = async () => ({
+    const MockStrategy = async (): Promise<StrategyResult> => ({
       person: {
+        title: 'Mr.',
         firstName: 'Somsak',
         lastName: 'Jeamteerasakul'
       },
       state: {
         _mockStrategy: true
-      }
+      },
     })
 
     const shin = new Shinichi()
@@ -22,6 +23,11 @@ describe('Shinichi Core', () => {
     const {person, state} = await shin.search()
     expect(person.firstName).toBe('Somsak')
     expect(person.lastName).toBe('Jeamteerasakul')
+
+    // Since gender is not requested, it should not be defined.
+    expect(person.gender).not.toBeDefined()
+
+    // The state should be properly assigned.
     expect(state._mockStrategy).toBe(true)
   })
 
