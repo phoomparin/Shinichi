@@ -6,9 +6,8 @@ async function main() {
   console.log('> Initialized')
 
   const target: Person = {
-    thFirstName: 'ภูมิปรินทร์',
-    thLastName: 'มะโน',
-    gender: 'Male'
+    thFirstName: 'รพีพัฒน์',
+    thLastName: 'แก้วประสิทธิ์',
   }
 
   const shin = new Shinichi()
