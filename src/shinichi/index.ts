@@ -69,4 +69,9 @@ export class Shinichi {
 
     return this.search()
   }
+
+  clear() {
+    this.state = {}
+    this.person = {}
+  }
 }
