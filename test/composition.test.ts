@@ -8,14 +8,15 @@ import {Shinichi} from '../src/shinichi'
 import {SchoolMockContext} from './mocks/SchoolMock'
 import {expectMatch} from './utils/Expect'
 
-const CombinedStrategy: Strategy = async (person, state, ctx): Promise<StrategyResult> => {
+const CombinedStrategy: Strategy = async (person, state, ctx): Promise<StrategyResult | undefined> => {
   await depends([SchoolStrategy, GenderStrategy], person, state, ctx)
 
-  if (person.gender && person.school) {
-    person.Facebook = {
-      match: 'phoomparin.mano',
-      text: 'https://facebook.com/phoomparin.mano'
-    }
+  // If the dependencies are not satisfied, abort.
+  if (!person.gender || !person.school) return
+
+  person.Facebook = {
+    match: 'phoomparin.mano',
+    text: 'https://facebook.com/phoomparin.mano'
   }
 
   return {person, state}
