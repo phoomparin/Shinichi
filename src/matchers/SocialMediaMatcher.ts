@@ -1,7 +1,7 @@
 import {BulkMatcher} from '../matchers/BulkMatcher'
 import {SearchResult} from 'types/SearchEngine'
-import {MatcherMapping, MatchResult} from 'types/Matcher'
-import {Person} from 'types/Person'
+import {MatcherMapping, MatchItem} from 'types/Matcher'
+import {Person, InternetAccount} from 'types/Person'
 
 const socialSites: MatcherMapping = {
   Facebook: 'facebook.com',
@@ -13,7 +13,12 @@ const socialSites: MatcherMapping = {
   Twitter: 'twitter.com',
 }
 
-export function SocialMatcher(results: SearchResult[]): MatchResult {
+export type SocialMap = Partial<Record<keyof Person, InternetAccount>>
+
+const AccountAdapter = (m: MatchItem): InternetAccount =>
+  ({username: m.match || '', link: m.text || ''})
+
+export function SocialMatcher(results: SearchResult[]): SocialMap {
   const bm = new BulkMatcher()
   bm.addMatchers(socialSites)
 
@@ -21,7 +26,8 @@ export function SocialMatcher(results: SearchResult[]): MatchResult {
     multiple: true,
   })
 
+  const links = results.map(x => x.link)
 
-  return bm.match(results.map(x => x.link))
+  return bm.match(links, AccountAdapter)
 }
 

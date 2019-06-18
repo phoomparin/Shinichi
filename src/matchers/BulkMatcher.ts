@@ -30,7 +30,7 @@ export class BulkMatcher {
       const m = this.matchWithRules(text)
 
       if (m) {
-        const [match, rule] = m
+        let [match, rule] = m
 
         results[rule] = match
       }

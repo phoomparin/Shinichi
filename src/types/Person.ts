@@ -21,15 +21,22 @@ export interface SchoolInfo {
   school: string
 }
 
+export interface InternetAccount {
+  username: string
+  link: string
+}
+
+type Acc = InternetAccount
+
 export interface SocialLinks {
-  Facebook: MatchItem
-  GitHub: MatchItem
-  LinkedIn: MatchItem
-  Medium: MatchItem
-  Bandcamp: MatchItem
-  Keybase: MatchItem
-  Twitter: MatchItem
-  YouTubeVideo: MatchItem[]
+  Facebook: Acc
+  GitHub: Acc
+  LinkedIn: Acc
+  Medium: Acc
+  Bandcamp: Acc
+  Keybase: Acc
+  Twitter: Acc
+  YouTubeVideo: Acc[]
 }
 
 export type Field = keyof Person
